@@ -1218,7 +1218,7 @@ input[type="text"]:-ms-input-placeholder {
 @media (max-width: 480px) {
   .index-customers .box-title .img-title img {
     width: 260px; }
-  
+
   .index-customers .list ul li {
     height: 60px;
     width: 28.6%; }
@@ -1240,12 +1240,12 @@ input[type="text"]:-ms-input-placeholder {
       height: auto;
       margin: 0 auto;
       padding-bottom: 95px; }
-    
+
     .index-partnerships .box-title {
       width: 100%;
       height: auto;
       padding-top: 95px; }
-    
+
     .index-partnerships .box-title .img-title {
       width: 100%;
       height: auto;
@@ -1254,7 +1254,7 @@ input[type="text"]:-ms-input-placeholder {
       font-size: 40px;
       line-height: 40px;
       color: #292929; }
-    
+
     .index-partnerships .box-title .con-title {
       text-align: center;
       font-size: 14px;
@@ -1265,10 +1265,10 @@ input[type="text"]:-ms-input-placeholder {
       margin: 7px auto 0; }
 
     .index-partnerships .row {
-      margin: 30px auto; 
-      display: flex; 
-      width: 1000px;
-      flex-wrap: wrap; 
+      margin: 30px auto;
+      display: flex;
+      max-width: 1000px;
+      flex-wrap: wrap;
       align-content: flex-start;
       justify-content: center
     }
@@ -1276,17 +1276,17 @@ input[type="text"]:-ms-input-placeholder {
     .index-partnerships .col {
       margin: 10px;
     }
-    
+
     .index-partnerships .list {
       width: 100%;
       height: auto;
       overflow: hidden;
       margin-top: 70px; }
-    
+
     .index-partnerships .list ul {
       width: 110%;
       height: auto; }
-    
+
     .index-partnerships .list ul li {
       width: 16.6%;
       height: 94px;
@@ -1295,12 +1295,12 @@ input[type="text"]:-ms-input-placeholder {
       border: 1px solid #d4d4d4;
       margin-bottom: 22px;
       position: relative; }
-    
+
     .index-partnerships .list ul li a {
       width: 100%;
       height: auto;
       display: block; }
-    
+
     .index-partnerships .list ul li a .bg {
       width: 100%;
       height: 100%;
@@ -1311,7 +1311,7 @@ input[type="text"]:-ms-input-placeholder {
       opacity: 0;
       transition: opacity .5s;
       z-index: 10; }
-    
+
     .index-partnerships .list ul li a .bg .line1 {
       width: 4px;
       height: 100%;
@@ -1319,7 +1319,7 @@ input[type="text"]:-ms-input-placeholder {
       position: absolute;
       top: 0;
       left: 0; }
-    
+
     .index-partnerships .list ul li a .bg .line2 {
       width: 100%;
       height: 4px;
@@ -1327,7 +1327,7 @@ input[type="text"]:-ms-input-placeholder {
       position: absolute;
       top: 0;
       left: 0; }
-    
+
     .index-partnerships .list ul li a .bg .line3 {
       width: 4px;
       height: 100%;
@@ -1335,7 +1335,7 @@ input[type="text"]:-ms-input-placeholder {
       position: absolute;
       right: 0;
       bottom: 0; }
-    
+
     .index-partnerships .list ul li a .bg .line4 {
       width: 100%;
       height: 4px;
@@ -1343,7 +1343,7 @@ input[type="text"]:-ms-input-placeholder {
       position: absolute;
       left: 0;
       bottom: 0; }
-    
+
     .index-partnerships .list ul li a img {
       max-width: 100%;
       max-height: 100%;
@@ -1353,7 +1353,7 @@ input[type="text"]:-ms-input-placeholder {
       right: 0;
       bottom: 0;
       margin: auto; }
-    
+
     .index-partnerships .more {
       width: 137px;
       height: 45px;
@@ -1365,14 +1365,14 @@ input[type="text"]:-ms-input-placeholder {
       display: block;
       margin: 40px auto 0;
       transition: all .5s; }
-    
+
     @media (min-width: 1024px) {
       .index-partnerships .list ul li:hover {
         border: 1px solid #fff; }
-    
+
       .index-partnerships .list ul li:hover a .bg {
         opacity: 1; }
-    
+
       .index-partnerships .more:hover {
         background: rgba(43, 81, 164, 0.6); } }
     @media (max-width: 1395px) {
@@ -1381,16 +1381,16 @@ input[type="text"]:-ms-input-placeholder {
     @media (max-width: 1024px) {
       .index-partnerships {
         padding-bottom: 55px; }
-    
+
       .index-partnerships .box-title {
         padding-top: 60px; }
-    
+
       .index-partnerships .list {
         margin-top: 30px; }
-    
+
       .index-partnerships .more {
         margin: 20px auto 0; }
-    
+
       .index-partnerships .list ul li a img {
         -webkit-filter: grayscale(0%);
         -moz-filter: grayscale(0%);
@@ -1401,23 +1401,23 @@ input[type="text"]:-ms-input-placeholder {
     @media (max-width: 760px) {
       .index-partnerships {
         padding-bottom: 35px; }
-    
+
       .index-partnerships .box-title {
         padding-top: 40px; }
-    
+
       .index-partnerships .list {
         margin-top: 20px; }
-    
+
       .index-partnerships .box-title .img-title {
         font-size: 22px;
         line-height: 22px; }
-    
+
       .index-partnerships .box-title .con-title {
         line-height: 20px; }
-    
+
       .index-partnerships .list ul li {
         height: 80px; }
-    
+
       .index-partnerships .list ul li a img {
         max-width: 90%;
         max-height: 90%; } }
@@ -1429,14 +1429,14 @@ input[type="text"]:-ms-input-placeholder {
     @media (max-width: 480px) {
       .index-partnerships .box-title .img-title img {
         width: 260px; }
-      
+
       .index-partnerships .list ul li {
         height: 60px;
         width: 28.6%; }
-    
+
       .index-partnerships .list ul li:last-child {
         display: none; }
-    
+
       .index-partnerships .more {
         width: 120px;
         height: 36px;
