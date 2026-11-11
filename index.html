@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>惠稷索源 · AI行为分析与语义识别 | 系统集成 · 楼宇智能化</title>
-<meta name="description" content="惠稷（上海）信息技术有限公司：以AI行为识别与语音语义算法为核心，提供会议行为管理、评标监督、安防监控等场景的边缘到平台一体化方案；同时提供系统集成与楼宇智能化服务。">
+<meta name="description" content="惠稷（上海）信息技术有限公司：以AI行为识别与语音语义算法为核心，提供会议行为管理、评标监督、制造业生产安全监督、安防监控等场景的边缘到平台一体化方案；同时提供系统集成与楼宇智能化服务。">
 <style>
 :root{
   --bg:#0b1220; --bg2:#111a2e;
@@ -249,6 +249,7 @@ footer .fline b{color:#b9c7db;font-weight:600}
 @media (max-width:1000px){
   .split,.split.rev{grid-template-columns:1fr;gap:36px}
   .split.rev .figure{order:-1}
+  #factory .figure>img{height:420px!important}
   .grid3{grid-template-columns:1fr 1fr}
   .grid4{grid-template-columns:1fr 1fr}
   .demo-body{grid-template-columns:1fr}
@@ -316,7 +317,7 @@ footer .fline b{color:#b9c7db;font-weight:600}
     <div class="hero-inner">
       <div class="hero-badge">AI 行为分析引擎 · 语音语义识别 · 边缘计算</div>
       <h1>AI 行为分析与语义识别<br><span class="grad">让每一个场所 可见 · 可懂 · 可管</span></h1>
-      <p class="sub">惠稷索源以自研行为识别与语音语义算法为核心，为会议管理、安防监控、重点场所监督提供「边缘感知 — 平台研判 — 闭环处置」一体化解决方案；同时深耕系统集成与楼宇智能化，让空间真正被 AI 认真看见。</p>
+      <p class="sub">惠稷索源以自研行为识别与语音语义算法为核心，为会议管理、评标监督、制造业生产安全、重点场所监控提供「边缘感知 — 平台研判 — 闭环处置」一体化解决方案；同时深耕系统集成与楼宇智能化，让空间真正被 AI 认真看见。</p>
       <div class="hero-btns">
         <a class="btn btn-primary" href="#contact">预约现场演示</a>
         <a class="btn btn-ghost" href="#core">了解核心能力</a>
@@ -387,7 +388,7 @@ footer .fline b{color:#b9c7db;font-weight:600}
         <p>对监控画面中的人员行为进行实时理解与结构化输出，异常行为秒级告警，全程留痕可回溯，让会风会纪、区域安全从「人盯人」走向「AI 盯全场」。</p>
         <div class="model-bar">
           <span>行为模型开关：</span>
-          <b><span id="modelOn">2</span> / <span id="modelAll">12</span> 个已启用</b>
+          <b><span id="modelOn">2</span> / <span id="modelAll">16</span> 个已启用</b>
           <span style="font-size:12.5px">点击下方模型可实时启停，演示画面同步生效</span>
         </div>
         <div class="chips" id="modelChips">
@@ -403,6 +404,10 @@ footer .fline b{color:#b9c7db;font-weight:600}
           <button class="chip" type="button" data-model="fall" aria-pressed="false">人员倒地</button>
           <button class="chip" type="button" data-model="dress" aria-pressed="false">着装异常</button>
           <button class="chip" type="button" data-model="smoke" aria-pressed="false">吸烟检测</button>
+          <button class="chip" type="button" data-model="helmet" aria-pressed="false">安全帽检测</button>
+          <button class="chip" type="button" data-model="post" aria-pressed="false">睡岗/脱岗</button>
+          <button class="chip" type="button" data-model="ops" aria-pressed="false">违规操作</button>
+          <button class="chip" type="button" data-model="fatigue" aria-pressed="false">疲劳作业</button>
         </div>
         <ul class="feat-list">
           <li>边缘计算部署：视频本地推理、断网可用，告警毫秒级上报</li>
@@ -519,6 +524,47 @@ footer .fline b{color:#b9c7db;font-weight:600}
   </div>
 </section>
 
+<!-- ======== 制造业 AI 监督 ======== -->
+<section id="factory" style="background:var(--soft)">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="kicker">MANUFACTURING · 制造业监督</span>
+      <h2>让生产安全与作业合规，也被 AI 认真看见</h2>
+      <p>把会场里验证成熟的行为识别引擎延伸到车间与产线：异常毫秒级识别、事前预警代替事后追责，数据不出厂区。</p>
+    </div>
+    <div class="split">
+      <div class="figure reveal">
+        <img src="assets/mfg-factory-line.jpg" alt="制造业产线 AI 行为监督" style="height:540px">
+        <span class="tag"><i></i>LIVE · 产线作业监督</span>
+        <div class="figure" style="position:absolute;right:14px;bottom:14px;width:34%;border-radius:12px;box-shadow:0 10px 26px rgba(0,0,0,.4)">
+          <img src="assets/mfg-welding.jpg" alt="焊接工位防护与违规操作检测" style="height:190px">
+        </div>
+      </div>
+      <div class="copy reveal">
+        <div class="en">PRODUCTION SAFETY</div>
+        <h3>车间里的 AI 安全员：从「事后追责」到「事前干预」</h3>
+        <p>对接厂区现有摄像头，边缘主机在本地完成推理——车间行为监控不断网、不出厂。安全帽与工装、危险区域、睡岗脱岗、违规操作等异常即时告警，直达值班室与班组长。</p>
+        <div class="chips">
+          <span class="chip">安全帽/工装检测</span><span class="chip">危险区域闯入</span><span class="chip">睡岗/脱岗</span>
+          <span class="chip">违规操作</span><span class="chip">疲劳作业</span><span class="chip">人员倒地</span>
+          <span class="chip">吸烟/明火</span><span class="chip">叉车人车混行</span>
+        </div>
+        <ul class="feat-list">
+          <li>复用产线现有摄像机，边缘部署断网可用，告警秒级直达值班室</li>
+          <li>告警联动班组长企微/钉钉，附带截图与短视频留证，方便班组交底</li>
+          <li>告警按班组/工位自动统计，安全绩效量化，支撑安全考核与迎检</li>
+        </ul>
+      </div>
+    </div>
+    <div class="about-feats" style="margin-top:44px">
+      <div class="af reveal"><b>🏭 案例 · 装配车间 睡岗/脱岗识别</b><span>工位长时间无人或长时间静止自动告警，班组长实时处置，消除夜间与交接班时段的监督盲区。</span></div>
+      <div class="af reveal"><b>🪛 案例 · 焊接工位 违规与防护检测</b><span>未戴焊接面罩、防护装备不齐即上岗，AI 即时识别提醒，把隐患拦截在作业开始之前。</span></div>
+      <div class="af reveal"><b>⚠️ 案例 · 危化品库区 电子围栏</b><span>未授权人员进入危险区域即时推送安保与值班室，全程留痕可回溯，满足安监检查要求。</span></div>
+      <div class="af reveal"><b>🚧 案例 · 厂区通道 人车混行预警</b><span>叉车与行人交会自动预警，吸烟、明火等违章行为纳入同一平台统一监管。</span></div>
+    </div>
+  </div>
+</section>
+
 <!-- ======== 数据带 ======== -->
 <div class="band">
   <div class="container band-grid reveal">
@@ -588,7 +634,7 @@ footer .fline b{color:#b9c7db;font-weight:600}
       <h2 style="font-size:32px;font-weight:800;margin:8px 0 34px">预约一场 30 分钟的现场演示</h2>
       <div class="info-item"><div class="ic">🏢</div><div><b>公司</b><span>惠稷（上海）信息技术有限公司</span></div></div>
       <div class="info-item"><div class="ic">📍</div><div><b>地址</b><span>上海市宝山区殷高西路101号高景国际大厦1602</span></div></div>
-      <div class="info-item"><div class="ic">📞</div><div><b>电话</b><span><a href="tel:13061798777" style="color:#9fd0ff">13061798777</a></span></div></div>
+      <div class="info-item"><div class="ic">📞</div><div><b>电话</b><span><a href="tel:18112476876" style="color:#9fd0ff">18112476876</a></span></div></div>
       <div class="info-item"><div class="ic">✉️</div><div><b>邮箱</b><span><a href="mailto:wp@mhxgo.com" style="color:#9fd0ff">wp@mhxgo.com</a></span></div></div>
     </div>
     <div class="form reveal">
@@ -611,7 +657,7 @@ footer .fline b{color:#b9c7db;font-weight:600}
           <input type="tel" name="phone" placeholder="联系电话" required>
         </div>
         <input type="text" name="org" placeholder="单位名称">
-        <textarea name="msg" placeholder="想了解的能力或场景（如：会议行为管理 / 评标室监督 / 系统集成）"></textarea>
+        <textarea name="msg" placeholder="想了解的能力或场景（如：会议行为管理 / 评标室监督 / 制造业安全监督 / 系统集成）"></textarea>
         <label class="form-check form-agree">
           <input type="checkbox" class="form-check-input" id="fAgree" required>
           <span class="form-check-label">我已阅读并同意 <a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过电话与我联系</span>
@@ -869,7 +915,7 @@ const submitBtn=document.getElementById('submitBtn');
 (function fillSource(){
   const set=(id,v)=>{const el=document.getElementById(id);if(el)el.value=v};
   const hash=location.hash||'首页';
-  const map={'#core':'核心能力-行为分析','#products':'产品矩阵','#scenes':'应用场景','#biz':'系统集成与楼宇智能化','#about':'关于我们','#contact':'联系我们','#top':'首页'};
+  const map={'#core':'核心能力-行为分析','#products':'产品矩阵','#scenes':'应用场景','#factory':'制造业监督','#biz':'系统集成与楼宇智能化','#about':'关于我们','#contact':'联系我们','#top':'首页'};
   set('fPage',map[hash]||'首页');
   set('fUrl',location.href);
   set('fRef',document.referrer?document.referrer.replace(/^https?:\/\//,'').slice(0,120):'直接访问');
@@ -910,10 +956,10 @@ leadForm.addEventListener('submit',async e=>{
       f.reset();
       document.getElementById('fAgree').checked=false;
     }else{
-      showMsg('提交失败：'+(data.message||'请稍后重试，或直接致电 13061798777'),true);
+      showMsg('提交失败：'+(data.message||'请稍后重试，或直接致电 18112476876'),true);
     }
   }catch(err){
-    showMsg('网络异常，请稍后重试，或直接致电 13061798777',true);
+    showMsg('网络异常，请稍后重试，或直接致电 18112476876',true);
   }finally{
     submitBtn.disabled=false;
     submitBtn.textContent=old;
