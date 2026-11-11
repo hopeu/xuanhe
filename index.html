@@ -74,18 +74,82 @@ section{padding:88px 0}
 .figure:hover img{transform:scale(1.04)}
 .figure .tag{position:absolute;top:14px;left:14px;background:rgba(10,18,32,.72);color:#7ee0ff;font-size:12px;letter-spacing:1.5px;padding:6px 14px;border-radius:99px;backdrop-filter:blur(6px)}
 .figure .tag i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#f87171;margin-right:7px;animation:blink 1.4s infinite;font-style:normal}
-/* AI 检测框 */
-.dbox{position:absolute;border:2px solid #22d3ee;border-radius:6px;box-shadow:0 0 14px rgba(34,211,238,.35)}
-.dbox .lbl{position:absolute;top:-30px;left:-2px;background:#22d3ee;color:#04222b;font-size:12px;font-weight:700;padding:3px 10px;border-radius:5px;white-space:nowrap}
-.dbox.warn{border-color:#f87171;box-shadow:0 0 14px rgba(248,113,113,.4)}
-.dbox.warn .lbl{background:#f87171;color:#fff}
-.dbox.ok{border-color:#4ade80;box-shadow:0 0 12px rgba(74,222,128,.35)}
-.dbox.ok .lbl{background:#4ade80;color:#052e12}
-@keyframes pulse{0%{opacity:.9}50%{opacity:.55}100%{opacity:.9}}
-.dbox{animation:pulse 2.2s infinite}
-.alert-toast{position:absolute;left:14px;bottom:14px;background:rgba(10,16,28,.86);backdrop-filter:blur(8px);border:1px solid rgba(248,113,113,.5);color:#fff;border-radius:12px;padding:10px 16px;font-size:13px;display:flex;gap:10px;align-items:center;box-shadow:0 8px 24px rgba(0,0,0,.35)}
-.alert-toast .dot{width:9px;height:9px;border-radius:50%;background:#f87171;box-shadow:0 0 8px #f87171;animation:blink 1.2s infinite}
-.alert-toast b{color:#fca5a5}
+/* ---------- AI 行为分析实时演示 ---------- */
+.demo{background:#0b1220;border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(10,25,55,.20);border:1px solid rgba(120,160,255,.14)}
+.demo-head{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:13px 18px;background:rgba(255,255,255,.045);border-bottom:1px solid rgba(255,255,255,.08);flex-wrap:wrap}
+.dh-left{display:flex;align-items:center;gap:13px;color:#cfe0f5;font-size:13.5px;flex-wrap:wrap}
+.live-dot{width:9px;height:9px;border-radius:50%;background:#22d3ee;box-shadow:0 0 10px #22d3ee;animation:blink 1.4s infinite;flex:none}
+.dh-time{font-variant-numeric:tabular-nums;color:#8ecbff;font-weight:700;letter-spacing:.5px}
+.dh-meta{color:#7d90ab;font-size:12.5px}
+.demo-modes{display:flex;gap:4px;background:rgba(255,255,255,.05);padding:4px;border-radius:99px;flex-wrap:wrap}
+.mbtn{border:none;background:transparent;color:#9fb4cf;font-size:13px;padding:7px 15px;border-radius:99px;cursor:pointer;transition:.2s;font-family:inherit;white-space:nowrap}
+.mbtn:hover{color:#fff}
+.mbtn.active{background:var(--grad);color:#fff;font-weight:600}
+.demo-body{display:grid;grid-template-columns:1fr 316px}
+.stage{position:relative;aspect-ratio:16/9;overflow:hidden;background:#070d18;cursor:crosshair}
+.stage img{width:100%;height:100%;object-fit:cover}
+.scanline{position:absolute;left:0;right:0;height:140px;background:linear-gradient(180deg,transparent,rgba(34,211,238,.13),transparent);animation:scan 6s linear infinite;pointer-events:none;z-index:2}
+@keyframes scan{0%{top:-140px}100%{top:100%}}
+.stage-cap{position:absolute;left:14px;bottom:14px;z-index:4;background:rgba(8,14,26,.78);border:1px solid rgba(120,180,255,.25);color:#a9c8e8;font-size:12px;padding:5px 13px;border-radius:99px;backdrop-filter:blur(6px)}
+.bx{position:absolute;border:2px solid #22d3ee;border-radius:5px;cursor:pointer;z-index:3;transition:opacity .25s,box-shadow .25s,transform .2s;box-shadow:0 0 12px rgba(34,211,238,.3);background:transparent;padding:0;appearance:none;-webkit-appearance:none}
+.bx .bl{position:absolute;top:-23px;left:-2px;background:#22d3ee;color:#04222b;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:4px;white-space:nowrap}
+.bx.below .bl{top:auto;bottom:-23px}
+.bx.warn{border-color:#f87171;box-shadow:0 0 12px rgba(248,113,113,.38)}
+.bx.warn .bl{background:#f87171;color:#fff}
+.bx.ok{border-color:#4ade80;box-shadow:0 0 10px rgba(74,222,128,.3)}
+.bx.ok .bl{background:#4ade80;color:#052e12}
+.bx:hover{transform:scale(1.02)}
+.bx.sel{border-width:3px;box-shadow:0 0 0 3px rgba(255,255,255,.25),0 0 22px currentColor;z-index:5}
+.bx.dim{opacity:.25}
+.bx.hide{display:none}
+.sem{position:absolute;z-index:4;max-width:196px;padding:7px 11px;border-radius:10px;background:rgba(10,18,34,.92);border:1px solid rgba(56,189,248,.5);color:#dbeafe;font-size:11.5px;backdrop-filter:blur(5px);box-shadow:0 8px 20px rgba(0,0,0,.4)}
+.sem .who{color:#38bdf8;font-size:11px;margin-bottom:3px;letter-spacing:.5px}
+.sem .wave{display:flex;gap:2px;align-items:flex-end;height:13px;margin-top:6px}
+.sem .wave i{width:2px;background:#38bdf8;border-radius:1px;animation:wv .9s ease-in-out infinite}
+@keyframes wv{0%,100%{height:4px}50%{height:13px}}
+.sem.hide{display:none}
+.stream{background:rgba(255,255,255,.035);border-left:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;overflow:hidden}
+.stream-head{padding:12px 15px;font-size:12.5px;color:#9fb4cf;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.07);flex:none}
+.stream-head b{color:#7fd8ff;font-variant-numeric:tabular-nums}
+.stream-list{flex:1;overflow-y:auto;padding:8px;min-height:0}
+.ev{display:flex;gap:10px;align-items:flex-start;padding:9px 10px;border-radius:10px;cursor:pointer;transition:.18s;border:1px solid transparent}
+.ev:hover{background:rgba(255,255,255,.055)}
+.ev.sel{background:rgba(34,211,238,.11);border-color:rgba(34,211,238,.4)}
+.ev .ei{width:8px;height:8px;border-radius:50%;margin-top:7px;flex:none}
+.ev.warn .ei{background:#f87171;box-shadow:0 0 8px #f87171}
+.ev.ok .ei{background:#4ade80}
+.ev.info .ei{background:#38bdf8}
+.ev .eb{flex:1;min-width:0}
+.ev .et{font-size:13px;color:#e6eefb;font-weight:600}
+.ev .em{font-size:11.5px;color:#8098b6;margin-top:1px}
+.ev .ec{margin-left:auto;font-size:11.5px;color:#7fd8ff;font-variant-numeric:tabular-nums;flex:none}
+.ev.fresh{animation:evIn .45s ease}
+@keyframes evIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+.demo-detail{border-top:1px solid rgba(255,255,255,.08);background:rgba(7,13,24,.6);padding:15px 18px;min-height:92px;color:#cfe0f5}
+.dd-empty{color:#8098b6;font-size:13px;display:flex;align-items:center;gap:9px;height:60px}
+.dd-empty .k{width:26px;height:26px;border-radius:8px;background:rgba(56,189,248,.13);color:#38bdf8;display:flex;align-items:center;justify-content:center;font-size:14px;flex:none}
+.dd-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:16px}
+.dd-grid span{display:block;font-size:11.5px;color:#8098b6;margin-bottom:2px}
+.dd-grid b{font-size:14.5px;color:#eaf2ff;font-weight:600}
+.dd-note{grid-column:1/-1;font-size:12.5px;color:#93a8c4;border-left:2px solid #1d4ed8;padding-left:10px}
+.cbar{height:5px;border-radius:99px;background:rgba(255,255,255,.1);overflow:hidden;margin-top:7px}
+.cbar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#22d3ee,#4ade80);transition:width .6s ease}
+/* 模型开关 */
+.chip{cursor:pointer;transition:.2s;user-select:none}
+.chip[aria-pressed="true"]{background:#eaf1ff;border-color:#9dc0ff;color:var(--brand);box-shadow:0 0 0 2px rgba(37,99,235,.08)}
+.chip[aria-pressed="false"]{opacity:.55}
+.chip[aria-pressed="false"]::before{background:#b6c3d4}
+.chip:hover{transform:translateY(-1px)}
+.model-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:2px 0 22px;font-size:13px;color:var(--muted)}
+.model-bar b{color:var(--brand);font-variant-numeric:tabular-nums}
+/* 展开详情 / 导航高亮 */
+.more-btn{margin-top:16px;background:none;border:1px solid var(--line);color:var(--brand);font-size:13px;padding:7px 16px;border-radius:99px;cursor:pointer;font-family:inherit;transition:.2s}
+.more-btn:hover{background:#eef4ff;border-color:#9dc0ff}
+.more{display:none;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
+.more.open{display:block}
+.more li{font-size:13.5px;color:var(--muted);margin-bottom:6px;list-style:none;padding-left:15px;position:relative}
+.more li::before{content:"·";position:absolute;left:4px;color:var(--brand2);font-weight:800}
+.nav-links a.active{background:#eef4ff;color:var(--brand)}
 .copy h3{font-size:27px;font-weight:800;margin-bottom:8px;letter-spacing:.5px}
 .copy .en{font-size:13px;color:var(--brand2);letter-spacing:2.5px;font-weight:700;margin-bottom:16px}
 .copy>p{color:var(--muted);margin-bottom:20px}
@@ -162,6 +226,14 @@ section{padding:88px 0}
 .form textarea{height:96px;resize:vertical}
 .form .btn{width:100%}
 .form .ok-msg{display:none;text-align:center;color:#4ade80;font-size:14px;margin-top:10px}
+.form .ok-msg.err{color:#fca5a5}
+.form .ok-msg.show{display:block}
+.form .btn[disabled]{opacity:.65;cursor:progress}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-agree{display:flex;gap:9px;align-items:flex-start;margin:-2px 0 16px;font-size:12.5px}
+.form-agree .form-check-input{margin-top:3px;accent-color:#22d3ee;flex:none;width:15px;height:15px}
+.form-agree .form-check-label{color:#a8bcd6;line-height:1.6}
+.form-agree a{color:#7cc4ff;text-decoration:underline}
 
 /* ---------- footer ---------- */
 footer{background:#0a101d;color:#7f92ad;padding:36px 0;font-size:13.5px;text-align:center}
@@ -171,7 +243,7 @@ footer .fline b{color:#b9c7db;font-weight:600}
 /* ---------- 动效 ---------- */
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.dbox,.hero-badge::before,.alert-toast .dot,.figure .tag i{animation:none}}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.scanline,.live-dot,.sem .wave i,.hero-badge::before,.figure .tag i{animation:none}}
 
 /* ---------- 响应式 ---------- */
 @media (max-width:1000px){
@@ -179,6 +251,9 @@ footer .fline b{color:#b9c7db;font-weight:600}
   .split.rev .figure{order:-1}
   .grid3{grid-template-columns:1fr 1fr}
   .grid4{grid-template-columns:1fr 1fr}
+  .demo-body{grid-template-columns:1fr}
+  .stream{border-left:none;border-top:1px solid rgba(255,255,255,.08)}
+  .stream-list{max-height:230px}
   .about-grid{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr;gap:40px}
   .hero h1{font-size:40px}
@@ -196,6 +271,16 @@ footer .fline b{color:#b9c7db;font-weight:600}
   .hero p.sub{font-size:15px}
   .hero-inner{padding:80px 0 40px}
   .grid3,.grid4,.alg-row{grid-template-columns:1fr}
+  .demo-head{gap:10px}
+  .dh-meta{width:100%;order:3}
+  .mbtn{padding:6px 12px;font-size:12.5px}
+  .stage-cap{display:none}
+  .sem{display:none}
+  .bx{border-width:1.5px}
+  .bx .bl{top:auto;bottom:1px;left:1px;font-size:9.5px;padding:1px 5px;border-radius:3px}
+  .bx.below .bl{bottom:auto;top:1px}
+  .demo-detail{padding:13px 15px;min-height:80px}
+  .dd-grid{gap:12px}
   .band-grid{grid-template-columns:repeat(2,1fr);gap:28px 10px}
   .about-grid .figure img{height:300px}
   .form .row{grid-template-columns:1fr}
@@ -254,31 +339,80 @@ footer .fline b{color:#b9c7db;font-weight:600}
       <h2>AI 行为检测：把「看得见」变成「看得懂」</h2>
       <p>基于深度学习的视频行为理解引擎，兼容现有多路摄像机，无需更换设备即可为存量监控赋予「理解人」的能力。</p>
     </div>
-    <div class="split">
-      <div class="figure reveal">
-        <img src="assets/meeting-detect.jpg" alt="会议现场AI行为检测示意">
-        <span class="tag"><i></i>LIVE · 会议行为分析</span>
-        <div class="dbox warn" style="left:9%;top:24%;width:15%;height:56%"><span class="lbl">玩手机 0.93</span></div>
-        <div class="dbox warn" style="left:29%;top:22%;width:13%;height:50%"><span class="lbl">打瞌睡 0.87</span></div>
-        <div class="dbox warn" style="left:66%;top:26%;width:13%;height:50%"><span class="lbl">离席 0.91</span></div>
-        <div class="dbox ok" style="left:84%;top:22%;width:13%;height:54%"><span class="lbl">正常参会 ✓</span></div>
-        <div class="alert-toast"><span class="dot"></span><div><b>行为告警</b> · 第3排发现「玩手机」行为，已推送至会务管理端</div></div>
+    <!-- 实时分析演示：框选目标 / 事件流 / 语义气泡 / 模型开关 -->
+    <div class="demo reveal" id="demo">
+      <div class="demo-head">
+        <div class="dh-left">
+          <span class="live-dot"></span>
+          <b>会议室 CAM-03 · 顶部广角</b>
+          <span class="dh-time" id="demoClock">14:32:08</span>
+          <span class="dh-meta">边缘推理 28ms · 1080P · 25FPS · 8 目标</span>
+        </div>
+        <div class="demo-modes" role="tablist" aria-label="叠加层显示">
+          <button class="mbtn active" type="button" data-mode="all" aria-selected="true">行为+语义</button>
+          <button class="mbtn" type="button" data-mode="behavior" aria-selected="false">仅行为</button>
+          <button class="mbtn" type="button" data-mode="semantic" aria-selected="false">仅语义</button>
+          <button class="mbtn" type="button" data-mode="off" aria-selected="false">关闭叠加</button>
+        </div>
       </div>
+      <div class="demo-body">
+        <div class="stage" id="stage">
+          <img src="assets/conf-render.jpg" alt="会议室顶部广角摄像机画面，AI 行为检测标注示意">
+          <div class="scanline"></div>
+          <div id="boxLayer"></div>
+          <div class="sem" id="semA" style="left:26.5%;top:39%">
+            <div class="who">· 实时转写 · 主桌左</div>
+            「这一项的分值我们再确认一下。」
+            <div class="wave"><i style="height:5px"></i><i style="height:9px;animation-delay:.1s"></i><i style="height:12px;animation-delay:.2s"></i><i style="height:7px;animation-delay:.3s"></i><i style="height:10px;animation-delay:.15s"></i><i style="height:4px;animation-delay:.25s"></i></div>
+          </div>
+          <div class="sem" id="semB" style="left:55.5%;top:39%">
+            <div class="who">· 实时转写 · 主桌右</div>
+            「同意，我会后把修订稿发给大家。」
+            <div class="wave"><i style="height:8px"></i><i style="height:4px;animation-delay:.12s"></i><i style="height:11px;animation-delay:.24s"></i><i style="height:6px;animation-delay:.3s"></i><i style="height:9px;animation-delay:.18s"></i><i style="height:5px;animation-delay:.26s"></i></div>
+          </div>
+          <div class="stage-cap">画面为演示用会议室俯视实拍 · 标注框对应画面中真实可辨识姿态</div>
+        </div>
+        <aside class="stream" id="stream">
+          <div class="stream-head"><span>实时事件流</span><b id="evtCount">0</b></div>
+          <div class="stream-list" id="streamList" role="log" aria-live="polite" aria-label="行为告警事件流"></div>
+        </aside>
+      </div>
+      <div class="demo-detail" id="demoDetail"></div>
+    </div>
+
+    <div class="split" style="margin-top:56px">
       <div class="copy reveal">
         <div class="en">BEHAVIOR RECOGNITION</div>
         <h3>20+ 种行为模型，覆盖会场与重点区域全场景</h3>
         <p>对监控画面中的人员行为进行实时理解与结构化输出，异常行为秒级告警，全程留痕可回溯，让会风会纪、区域安全从「人盯人」走向「AI 盯全场」。</p>
-        <div class="chips">
-          <span class="chip">使用手机</span><span class="chip">打瞌睡</span><span class="chip">离席走动</span>
-          <span class="chip">交头接耳</span><span class="chip">起立发言</span><span class="chip">举手表决</span>
-          <span class="chip">区域入侵</span><span class="chip">人员聚集</span><span class="chip">遗留物品</span>
-          <span class="chip">人员倒地</span><span class="chip">着装异常</span><span class="chip">吸烟检测</span>
+        <div class="model-bar">
+          <span>行为模型开关：</span>
+          <b><span id="modelOn">2</span> / <span id="modelAll">12</span> 个已启用</b>
+          <span style="font-size:12.5px">点击下方模型可实时启停，演示画面同步生效</span>
+        </div>
+        <div class="chips" id="modelChips">
+          <button class="chip" type="button" data-model="phone" aria-pressed="true">使用手机</button>
+          <button class="chip" type="button" data-model="sleep" aria-pressed="true">打瞌睡</button>
+          <button class="chip" type="button" data-model="leave" aria-pressed="false">离席走动</button>
+          <button class="chip" type="button" data-model="talk" aria-pressed="false">交头接耳</button>
+          <button class="chip" type="button" data-model="stand" aria-pressed="false">起立发言</button>
+          <button class="chip" type="button" data-model="vote" aria-pressed="false">举手表决</button>
+          <button class="chip" type="button" data-model="intrude" aria-pressed="false">区域入侵</button>
+          <button class="chip" type="button" data-model="crowd" aria-pressed="false">人员聚集</button>
+          <button class="chip" type="button" data-model="object" aria-pressed="false">遗留物品</button>
+          <button class="chip" type="button" data-model="fall" aria-pressed="false">人员倒地</button>
+          <button class="chip" type="button" data-model="dress" aria-pressed="false">着装异常</button>
+          <button class="chip" type="button" data-model="smoke" aria-pressed="false">吸烟检测</button>
         </div>
         <ul class="feat-list">
           <li>边缘计算部署：视频本地推理、断网可用，告警毫秒级上报</li>
           <li>兼容存量系统：支持 RTSP / ONVIF / GB28181，复用现有摄像机</li>
           <li>私有化交付：数据不出场所，算法模型可持续训练优化</li>
         </ul>
+      </div>
+      <div class="figure reveal">
+        <img src="assets/meeting-detect.jpg" alt="复用现有摄像机的真实会议现场">
+        <span class="tag"><i></i>复用现有摄像机 · 无需换设备</span>
       </div>
     </div>
     <div class="alg-row reveal">
@@ -454,20 +588,36 @@ footer .fline b{color:#b9c7db;font-weight:600}
       <h2 style="font-size:32px;font-weight:800;margin:8px 0 34px">预约一场 30 分钟的现场演示</h2>
       <div class="info-item"><div class="ic">🏢</div><div><b>公司</b><span>惠稷（上海）信息技术有限公司</span></div></div>
       <div class="info-item"><div class="ic">📍</div><div><b>地址</b><span>上海市宝山区殷高西路101号高景国际大厦1602</span></div></div>
-      <div class="info-item"><div class="ic">📞</div><div><b>电话</b><span><a href="tel:17770022208" style="color:#9fd0ff">17770022208</a></span></div></div>
-      <div class="info-item"><div class="ic">✉️</div><div><b>邮箱</b><span>contact@example.com（占位，请替换）</span></div></div>
+      <div class="info-item"><div class="ic">📞</div><div><b>电话</b><span><a href="tel:13061798777" style="color:#9fd0ff">13061798777</a></span></div></div>
+      <div class="info-item"><div class="ic">✉️</div><div><b>邮箱</b><span><a href="mailto:wp@mhxgo.com" style="color:#9fd0ff">wp@mhxgo.com</a></span></div></div>
     </div>
     <div class="form reveal">
       <h4>留下您的需求，我们尽快联系您</h4>
-      <form id="leadForm">
+      <form id="leadForm" novalidate>
+        <!-- Web3Forms 通道：在 https://web3forms.com 注册后，把 access_key 粘到下面
+             （必须是 UUID 格式，例：b4c1f2de-8a3f-4e7b-9c21-5f0a7d3e1b88） -->
+        <input type="hidden" name="access_key" id="wfKey" value="ef82700a-1a86-4e66-9067-b8ca91a05ff1">
+        <input type="hidden" name="subject" value="【官网咨询】惠稷索源 · 需求反馈">
+        <input type="hidden" name="from_name" value="惠稷索源官网">
+        <input type="hidden" name="来源页面" id="fPage">
+        <input type="hidden" name="来源URL" id="fUrl">
+        <input type="hidden" name="来源渠道" id="fRef">
+        <input type="hidden" name="访问时间" id="fTime">
+        <input type="hidden" name="浏览器信息" id="fUa">
+        <!-- 蜜罐：真人不会填，机器人填了会被 Web3Forms 拦截 -->
+        <div class="hp" aria-hidden="true"><input type="text" name="bot-field" tabindex="-1" autocomplete="off"></div>
         <div class="row">
           <input type="text" name="name" placeholder="您的称呼" required>
           <input type="tel" name="phone" placeholder="联系电话" required>
         </div>
         <input type="text" name="org" placeholder="单位名称">
         <textarea name="msg" placeholder="想了解的能力或场景（如：会议行为管理 / 评标室监督 / 系统集成）"></textarea>
-        <button class="btn btn-primary" type="submit">提交需求</button>
-        <p class="ok-msg" id="okMsg">✓ 已收到您的需求，我们会尽快与您联系！</p>
+        <label class="form-check form-agree">
+          <input type="checkbox" class="form-check-input" id="fAgree" required>
+          <span class="form-check-label">我已阅读并同意 <a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过电话与我联系</span>
+        </label>
+        <button class="btn btn-primary" type="submit" id="submitBtn">提交需求</button>
+        <p class="ok-msg" id="okMsg" role="status" aria-live="polite"></p>
       </form>
     </div>
   </div>
@@ -477,7 +627,7 @@ footer .fline b{color:#b9c7db;font-weight:600}
 <footer>
   <div class="container">
     <div class="fline"><b>惠稷（上海）信息技术有限公司</b> · AI 行为分析 · 语义识别 · 系统集成 · 楼宇智能化</div>
-    <div class="fline">Copyright © 2019 惠稷（上海）信息技术有限公司 版权所有 All rights reserved. 苏ICP备19019780号-1</div>
+    <div class="fline">Copyright © 2019 惠稷（上海）信息技术有限公司 版权所有 All rights reserved. 苏ICP备19019780号-1 · <a href="privacy.html" style="color:#8fb6e8">隐私政策</a></div>
   </div>
 </footer>
 
@@ -505,11 +655,269 @@ const cio=new IntersectionObserver(es=>es.forEach(e=>{
 }),{threshold:.6});
 document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
 
-// 表单（前端演示，未接后端）
-document.getElementById('leadForm').addEventListener('submit',e=>{
+// ================= AI 行为分析实时演示 =================
+const TARGETS=[
+ {id:'t1',model:'sleep', type:'打瞌睡',conf:93,dur:'2分18秒',pos:'主桌左 · 第1位',x:27.8,y:26.6,w:6.6,h:12.0,level:'warn',note:'头部贴于桌面、持续时长超过 90 秒，判定为休眠姿态'},
+ {id:'t2',model:'phone',type:'使用手机',conf:94,dur:'1分05秒',pos:'主桌中 · 第1位',x:53.6,y:22.4,w:6.8,h:15.6,level:'warn',note:'低头俯身且手部持物，符合持机操作姿态特征'},
+ {id:'t3',model:'sleep',type:'打瞌睡',conf:88,dur:'58秒',  pos:'主桌右 · 第2位',x:62.8,y:23.8,w:7.0,h:14.2,level:'warn',note:'头部低于肩线并向桌面倾斜，疑似打瞌睡'},
+ {id:'t4',model:'phone',type:'使用手机',conf:90,dur:'43秒',  pos:'副桌中 · 第2位',x:43.8,y:58.6,w:6.6,h:14.6,level:'warn',note:'高举手持设备并对焦拍摄，判定为使用手机'},
+ {id:'t5',model:'normal',type:'正常参会',conf:96,dur:'32分10秒',pos:'副桌右 · 第4位',x:63.8,y:59.8,w:7.4,h:14.6,level:'ok',note:'持续朝向发言席，全程无异常行为'},
+ {id:'t6',model:'normal',type:'正常参会',conf:97,dur:'31分48秒',pos:'副桌左 · 第1位',x:34.6,y:59.8,w:6.6,h:12.6,level:'ok',note:'记录与会状态，姿态规范'},
+ {id:'t7',model:'sleep',type:'打瞌睡',conf:86,dur:'41秒',  pos:'主桌左 · 第2位',x:38.0,y:27.6,w:5.9,h:10.4,level:'warn',note:'头部前倾贴近桌面、手部支撑头部，判定为困倦姿态'}
+];
+const ENABLED=new Set(['phone','sleep']);
+let selected=null, mode='all', evSeq=0;
+
+const boxLayer=document.getElementById('boxLayer');
+const streamList=document.getElementById('streamList');
+const detailBox=document.getElementById('demoDetail');
+const evtCount=document.getElementById('evtCount');
+
+function pad(n){return String(n).padStart(2,'0')}
+let clockSec=14*3600+32*60+8;
+function stamp(){return pad(Math.floor(clockSec/3600)%24)+':'+pad(Math.floor(clockSec/60)%60)+':'+pad(clockSec%60)}
+
+function renderBoxes(){
+  boxLayer.innerHTML='';
+  TARGETS.forEach(t=>{
+    const b=document.createElement('button');
+    b.type='button';
+    b.className='bx '+(t.level==='warn'?'warn':'ok')+(t.y>50?' below':'');
+    b.style.left=t.x+'%';b.style.top=t.y+'%';b.style.width=t.w+'%';b.style.height=t.h+'%';
+    b.dataset.target=t.id;
+    b.setAttribute('aria-label',t.type+'，置信度 '+t.conf+'%，位置 '+t.pos);
+    b.innerHTML='<span class="bl">'+t.type+' '+t.conf+'%</span>';
+    b.addEventListener('click',e=>{e.stopPropagation();select(t.id)});
+    boxLayer.appendChild(b);
+  });
+  applyLayers();
+}
+function applyLayers(){
+  boxLayer.querySelectorAll('.bx').forEach(b=>{
+    const t=TARGETS.find(x=>x.id===b.dataset.target);
+    const modelOn=t.model==='normal'||ENABLED.has(t.model);
+    const showBox=(mode==='all'||mode==='behavior')&&modelOn;
+    b.classList.toggle('hide',!showBox);
+    b.classList.toggle('sel',selected===t.id);
+    b.classList.toggle('dim',!!selected&&selected!==t.id);
+  });
+  const showSem=(mode==='all'||mode==='semantic');
+  document.getElementById('semA').classList.toggle('hide',!showSem);
+  document.getElementById('semB').classList.toggle('hide',!showSem);
+}
+function renderDetail(){
+  if(!selected){
+    detailBox.innerHTML='<div class="dd-empty"><span class="k">◎</span><span>点击画面中的标注框或右侧事件，查看该目标的判定依据、置信度与联动处置</span></div>';
+    return;
+  }
+  const t=TARGETS.find(x=>x.id===selected);
+  detailBox.innerHTML=
+    '<div class="dd-grid">'+
+      '<div><span>行为类型</span><b>'+t.type+'</b></div>'+
+      '<div><span>置信度</span><b>'+t.conf+'%</b><div class="cbar"><i style="width:'+t.conf+'%"></i></div></div>'+
+      '<div><span>持续时长</span><b>'+t.dur+'</b></div>'+
+      '<div><span>位置</span><b>'+t.pos+'</b></div>'+
+      '<div><span>触发模型</span><b>'+t.type+' V2.3</b></div>'+
+      '<div class="dd-note">判定依据：'+t.note+
+        '<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">'+
+          '<button class="more-btn" type="button" data-act="replay">查看回放</button>'+
+          '<button class="more-btn" type="button" data-act="push">推送告警</button>'+
+          '<button class="more-btn" type="button" data-act="fp">标记误报</button>'+
+          '<span id="actMsg" style="font-size:12.5px;color:#7fd8ff;align-self:center"></span>'+
+        '</div></div>'+
+    '</div>';
+}
+function select(id){
+  selected=(selected===id)?null:id;
+  applyLayers();
+  renderDetail();
+  streamList.querySelectorAll('.ev').forEach(e=>e.classList.toggle('sel',e.dataset.target===selected));
+  if(selected){
+    const card=streamList.querySelector('.ev[data-target="'+selected+'"]');
+    if(card)card.scrollIntoView({block:'nearest',behavior:'smooth'});
+  }
+}
+document.getElementById('stage').addEventListener('click',e=>{
+  if(e.target.closest('.bx'))return;
+  selected=null;applyLayers();renderDetail();
+  streamList.querySelectorAll('.ev').forEach(e=>e.classList.remove('sel'));
+});
+detailBox.addEventListener('click',e=>{
+  const b=e.target.closest('[data-act]');
+  if(!b)return;
+  const msgs={replay:'正在调取该时段录像片段…',push:'告警已推送至会务管理端与值班坐席',fp:'已标记为误报，样本将进入模型迭代队列'};
+  document.getElementById('actMsg').textContent='✓ '+msgs[b.dataset.act];
+});
+document.getElementById('demoDetail').addEventListener('click',()=>{});
+
+function addEvent(t,time,fresh){
+  const card=document.createElement('div');
+  card.className='ev '+t.level+(fresh?' fresh':'');
+  card.dataset.target=t.id;
+  card.innerHTML='<span class="ei"></span><span class="eb"><span class="et">'+t.type+'</span><span class="em">'+t.pos+' · 持续 '+t.dur+'</span></span><span class="ec">'+t.conf+'%</span>';
+  card.addEventListener('click',()=>select(t.id));
+  streamList.insertBefore(card,streamList.firstChild);
+  while(streamList.children.length>10)streamList.removeChild(streamList.lastChild);
+  evtCount.textContent=streamList.children.length;
+  streamList.querySelectorAll('.ev').forEach(e=>e.classList.toggle('sel',selected&&e.dataset.target===selected));
+}
+function seedEvents(){
+  const seed=[
+    {t:TARGETS[1],time:'14:31:42'},{t:TARGETS[0],time:'14:31:36'},
+    {t:TARGETS[3],time:'14:31:20'},{t:TARGETS[6],time:'14:31:14'},
+    {t:TARGETS[2],time:'14:31:08'},{t:TARGETS[4],time:'14:30:55'},
+    {t:TARGETS[5],time:'14:30:41'}
+  ];
+  seed.reverse().forEach(s=>{
+    const card=document.createElement('div');
+    card.className='ev '+s.t.level;
+    card.dataset.target=s.t.id;
+    card.innerHTML='<span class="ei"></span><span class="eb"><span class="et">'+s.t.type+'</span><span class="em">'+s.t.pos+' · 持续 '+s.t.dur+'</span></span><span class="ec">'+s.t.conf+'%</span>';
+    card.addEventListener('click',()=>select(s.t.id));
+    streamList.appendChild(card);
+  });
+  evtCount.textContent=streamList.children.length;
+}
+let liveIdx=0;
+setInterval(()=>{
+  clockSec++;
+  document.getElementById('demoClock').textContent=stamp();
+},1000);
+setInterval(()=>{
+  const warn=TARGETS.filter(t=>t.level==='warn');
+  const t=warn[liveIdx%warn.length];
+  liveIdx++;
+  const c=document.createElement('div');
+  c.className='ev '+t.level+' fresh';
+  c.dataset.target=t.id;
+  c.innerHTML='<span class="ei"></span><span class="eb"><span class="et">'+t.type+'</span><span class="em">'+t.pos+' · 持续 '+t.dur+'</span></span><span class="ec">'+t.conf+'%</span>';
+  c.addEventListener('click',()=>select(t.id));
+  streamList.insertBefore(c,streamList.firstChild);
+  while(streamList.children.length>10)streamList.removeChild(streamList.lastChild);
+  evtCount.textContent=streamList.children.length;
+  streamList.querySelectorAll('.ev').forEach(e=>e.classList.toggle('sel',selected&&e.dataset.target===selected));
+},5200);
+
+// 叠加层模式切换
+document.querySelectorAll('.mbtn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.mbtn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false')});
+    btn.classList.add('active');btn.setAttribute('aria-selected','true');
+    mode=btn.dataset.mode;
+    applyLayers();
+  });
+});
+// 行为模型开关
+document.getElementById('modelChips').addEventListener('click',e=>{
+  const chip=e.target.closest('.chip');
+  if(!chip)return;
+  const m=chip.dataset.model;
+  const on=chip.getAttribute('aria-pressed')==='true';
+  chip.setAttribute('aria-pressed',String(!on));
+  if(on)ENABLED.delete(m);else ENABLED.add(m);
+  document.getElementById('modelOn').textContent=ENABLED.size;
+  applyLayers();
+});
+renderBoxes();
+seedEvents();
+renderDetail();
+// 事件栏高度与画面同步
+const stageEl=document.getElementById('stage'),streamEl=document.getElementById('stream');
+function syncStream(){streamEl.style.height=stageEl.clientHeight+'px'}
+syncStream();
+if(window.ResizeObserver)new ResizeObserver(syncStream).observe(stageEl);
+window.addEventListener('resize',syncStream);
+
+// ================= 其它交互 =================
+// 导航滚动高亮
+const navA=[...document.querySelectorAll('.nav-links a[href^="#"]')];
+const spy=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(!e.isIntersecting)return;
+    navA.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));
+  });
+},{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
+
+// 产品卡片展开详情
+const MORE={
+ '边缘 AI 分析主机':['单台支持 16 路 1080P 视频 + 4 路音频接入','内置 NPU 算力单元，整机功耗 ≤ 180W','支持 4K/HDMI 直出，可直接驱动现场大屏','-20℃～60℃ 宽温运行，支持机架式与壁挂式安装'],
+ '行为分析管理平台':['边缘节点、设备、模型三级配置，支持批量下发','告警可按场所、行为、时间、置信度多维检索','内置会纪报告与发言统计模板，一键导出','开放 Webhook / MQTT / 短信 / 企微多通道推送'],
+ '开放能力与信创适配':['提供 RESTful API 与 Python/Java SDK','支持 GB28181、ONVIF、RTSP、MQTT 等标准协议','适配鲲鹏、飞腾、昇腾及 x86 算力平台','支持 Docker / K8s 编排，可横向扩展至千级点位']
+};
+document.querySelectorAll('#products .card').forEach(card=>{
+  const title=card.querySelector('h4').textContent.trim();
+  const list=MORE[title];if(!list)return;
+  const btn=document.createElement('button');
+  btn.className='more-btn';btn.type='button';btn.textContent='查看技术参数 ▾';
+  const more=document.createElement('div');
+  more.className='more';
+  more.innerHTML='<ul>'+list.map(i=>'<li>'+i+'</li>').join('')+'</ul>';
+  card.querySelector('.bd').appendChild(btn);
+  card.querySelector('.bd').appendChild(more);
+  btn.addEventListener('click',()=>{
+    const open=more.classList.toggle('open');
+    btn.textContent=open?'收起参数 ▴':'查看技术参数 ▾';
+  });
+});
+
+// ================= 反馈表单（Web3Forms 通道） =================
+const leadForm=document.getElementById('leadForm');
+const okMsg=document.getElementById('okMsg');
+const submitBtn=document.getElementById('submitBtn');
+// 预填来源信息，便于判断哪些页面带来咨询
+(function fillSource(){
+  const set=(id,v)=>{const el=document.getElementById(id);if(el)el.value=v};
+  const hash=location.hash||'首页';
+  const map={'#core':'核心能力-行为分析','#products':'产品矩阵','#scenes':'应用场景','#biz':'系统集成与楼宇智能化','#about':'关于我们','#contact':'联系我们','#top':'首页'};
+  set('fPage',map[hash]||'首页');
+  set('fUrl',location.href);
+  set('fRef',document.referrer?document.referrer.replace(/^https?:\/\//,'').slice(0,120):'直接访问');
+  set('fTime',new Date().toLocaleString('zh-CN',{hour12:false}));
+  set('fUa',navigator.userAgent.slice(0,160));
+})();
+function showMsg(text,isErr){
+  okMsg.textContent=text;
+  okMsg.classList.toggle('err',!!isErr);
+  okMsg.classList.add('show');
+}
+leadForm.addEventListener('submit',async e=>{
   e.preventDefault();
-  document.getElementById('okMsg').style.display='block';
-  e.target.reset();
+  const f=e.target;
+  const name=f.name.value.trim();
+  const phone=f.phone.value.trim();
+  const agree=document.getElementById('fAgree').checked;
+  const key=document.getElementById('wfKey').value.trim();
+  if(f['bot-field'].value){showMsg('提交成功，我们会尽快与您联系！');return;} // 蜜罐
+  if(!name){showMsg('请填写您的称呼',true);f.name.focus();return;}
+  if(!/^1[3-9]\d{9}$/.test(phone)){showMsg('请填写有效的 11 位手机号码',true);f.phone.focus();return;}
+  if(!agree){showMsg('请阅读并勾选《隐私政策》后提交',true);document.getElementById('fAgree').focus();return;}
+  if(!key||key==='YOUR_WEB3FORMS_ACCESS_KEY'){
+    showMsg('表单通道尚未配置：请联系管理员在 Web3Forms 后台申请 access_key（UUID 格式）并填入。',true);
+    return;
+  }
+  const fd=new FormData(f);
+  fd.set('name',name);
+  fd.set('phone',phone);
+  submitBtn.disabled=true;
+  const old=submitBtn.textContent;
+  submitBtn.textContent='提交中…';
+  try{
+    const res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd,headers:{Accept:'application/json'}});
+    const data=await res.json().catch(()=>({}));
+    if(data.success){
+      showMsg('✓ 已收到您的需求，我们会尽快与您联系！');
+      f.reset();
+      document.getElementById('fAgree').checked=false;
+    }else{
+      showMsg('提交失败：'+(data.message||'请稍后重试，或直接致电 13061798777'),true);
+    }
+  }catch(err){
+    showMsg('网络异常，请稍后重试，或直接致电 13061798777',true);
+  }finally{
+    submitBtn.disabled=false;
+    submitBtn.textContent=old;
+  }
 });
 </script>
 </body>
