@@ -4,13 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>惠稷索源 · AI行为分析与语义识别 | 系统集成 · 楼宇智能化</title>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta name="description" content="惠稷（上海）信息技术有限公司：以AI行为识别与语音语义算法为核心，提供会议行为管理、评标监督、制造业生产安全监督、安防监控等场景的边缘到平台一体化方案；同时提供系统集成与楼宇智能化服务。">
 <style>
 :root{
   --bg:#0b1220; --bg2:#111a2e;
   --ink:#132034; --muted:#5d6d82;
-  --brand:#1d4ed8; --brand2:#0891b2;
-  --grad:linear-gradient(120deg,#2563eb 0%,#06b6d4 100%);
+  --brand:#b99d7e; --brand2:#8a6d4f;
+  --grad:linear-gradient(120deg,#b99d7e 0%,#d6bd99 100%);
   --line:#e4eaf2; --card:#ffffff; --soft:#f4f7fb;
   --ok:#16a34a; --warn:#ef4444;
   --radius:16px;
@@ -27,12 +29,12 @@ a{text-decoration:none;color:inherit}
 header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
 .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:19px;color:var(--ink)}
-.logo-mark{width:34px;height:34px;border-radius:9px;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;letter-spacing:.5px}
-.logo small{font-size:11px;color:var(--muted);font-weight:500;display:block;line-height:1.1;letter-spacing:1px}
+.logo img{height:34px;width:auto;display:block}
+.logo .logo-icon{display:none}
 .nav-links{display:flex;gap:4px;align-items:center}
 .nav-links a{padding:8px 14px;border-radius:10px;font-size:14.5px;color:#33435c;transition:.2s}
 .nav-links a:hover{background:var(--soft);color:var(--brand)}
-.nav-cta{margin-left:10px;padding:9px 20px!important;background:var(--grad);color:#fff!important;border-radius:24px!important;font-weight:600;box-shadow:0 6px 16px rgba(37,99,235,.30)}
+.nav-cta{margin-left:10px;padding:9px 20px!important;background:var(--grad);color:#fff!important;border-radius:24px!important;font-weight:600;box-shadow:0 6px 16px rgba(185,157,126,.35)}
 .nav-cta:hover{opacity:.92;background:var(--grad)!important}
 .nav-toggle{display:none;background:none;border:none;font-size:24px;color:var(--ink);cursor:pointer;line-height:1;padding:6px}
 
@@ -41,28 +43,28 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.9);backdro
 .hero-bg{position:absolute;inset:0;background:url("assets/hero-surveillance.jpg") center/cover no-repeat}
 .hero-mask{position:absolute;inset:0;background:linear-gradient(100deg,rgba(7,14,28,.93) 25%,rgba(7,14,28,.72) 60%,rgba(9,20,40,.55));}
 .hero-inner{position:relative;padding:110px 0 70px;max-width:820px}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;letter-spacing:1px;color:#9fd7ff;background:rgba(56,140,255,.14);border:1px solid rgba(120,180,255,.35);padding:7px 16px;border-radius:99px;margin-bottom:26px}
-.hero-badge::before{content:"";width:7px;height:7px;border-radius:50%;background:#22d3ee;box-shadow:0 0 10px #22d3ee;animation:blink 1.6s infinite}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;letter-spacing:1px;color:#ecd9b6;background:rgba(185,157,126,.16);border:1px solid rgba(214,189,153,.4);padding:7px 16px;border-radius:99px;margin-bottom:26px}
+.hero-badge::before{content:"";width:7px;height:7px;border-radius:50%;background:#e2c89c;box-shadow:0 0 10px #d6bd99;animation:blink 1.6s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
 .hero h1{font-size:52px;line-height:1.22;font-weight:800;letter-spacing:1px}
-.hero h1 .grad{background:linear-gradient(120deg,#60a5fa,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1 .grad{background:linear-gradient(120deg,#e6cf9f,#f7ecd2);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero p.sub{margin:24px 0 38px;font-size:17.5px;color:#c3d3ea;max-width:640px}
 .hero-btns{display:flex;gap:16px;flex-wrap:wrap}
 .btn{display:inline-block;padding:13px 30px;border-radius:28px;font-size:15.5px;font-weight:600;transition:.25s;cursor:pointer;border:none}
-.btn-primary{background:var(--grad);color:#fff;box-shadow:0 8px 22px rgba(34,150,235,.4)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(34,150,235,.5)}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 8px 22px rgba(185,157,126,.4)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(185,157,126,.5)}
 .btn-ghost{background:transparent;color:#e8f1fb;border:1.5px solid rgba(255,255,255,.45)}
 .btn-ghost:hover{border-color:#7cc4ff;color:#7cc4ff}
 .hero-stats{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:72px;padding:26px 10px 40px}
 .hstat{text-align:center;padding:14px 6px;border-left:1px solid rgba(255,255,255,.14)}
 .hstat:first-child{border-left:none}
-.hstat b{font-size:32px;font-weight:800;background:linear-gradient(120deg,#7dd0ff,#3ee0c8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hstat b{font-size:32px;font-weight:800;background:linear-gradient(120deg,#e6cf9f,#f3e3bd);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hstat span{display:block;font-size:13px;color:#9fb4cf;margin-top:2px}
 
 /* ---------- 通用 section ---------- */
 section{padding:88px 0}
 .sec-head{text-align:center;max-width:760px;margin:0 auto 56px}
-.kicker{display:inline-block;font-size:13.5px;font-weight:700;letter-spacing:3px;color:var(--brand);background:#eaf1ff;padding:6px 18px;border-radius:99px;margin-bottom:18px}
+.kicker{display:inline-block;font-size:13.5px;font-weight:700;letter-spacing:3px;color:var(--brand2);background:#f4ecdf;padding:6px 18px;border-radius:99px;margin-bottom:18px}
 .sec-head h2{font-size:36px;font-weight:800;letter-spacing:1px;line-height:1.35}
 .sec-head p{margin-top:16px;color:var(--muted);font-size:16px}
 
@@ -72,7 +74,7 @@ section{padding:88px 0}
 .figure{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
 .figure img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
 .figure:hover img{transform:scale(1.04)}
-.figure .tag{position:absolute;top:14px;left:14px;background:rgba(10,18,32,.72);color:#7ee0ff;font-size:12px;letter-spacing:1.5px;padding:6px 14px;border-radius:99px;backdrop-filter:blur(6px)}
+.figure .tag{position:absolute;top:14px;left:14px;background:rgba(26,20,12,.72);color:#ecd9b6;font-size:12px;letter-spacing:1.5px;padding:6px 14px;border-radius:99px;backdrop-filter:blur(6px)}
 .figure .tag i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#f87171;margin-right:7px;animation:blink 1.4s infinite;font-style:normal}
 /* ---------- AI 行为分析实时演示 ---------- */
 .demo{background:#0b1220;border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(10,25,55,.20);border:1px solid rgba(120,160,255,.14)}
@@ -131,25 +133,25 @@ section{padding:88px 0}
 .dd-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:16px}
 .dd-grid span{display:block;font-size:11.5px;color:#8098b6;margin-bottom:2px}
 .dd-grid b{font-size:14.5px;color:#eaf2ff;font-weight:600}
-.dd-note{grid-column:1/-1;font-size:12.5px;color:#93a8c4;border-left:2px solid #1d4ed8;padding-left:10px}
+.dd-note{grid-column:1/-1;font-size:12.5px;color:#93a8c4;border-left:2px solid var(--brand);padding-left:10px}
 .cbar{height:5px;border-radius:99px;background:rgba(255,255,255,.1);overflow:hidden;margin-top:7px}
 .cbar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#22d3ee,#4ade80);transition:width .6s ease}
 /* 模型开关 */
 .chip{cursor:pointer;transition:.2s;user-select:none}
-.chip[aria-pressed="true"]{background:#eaf1ff;border-color:#9dc0ff;color:var(--brand);box-shadow:0 0 0 2px rgba(37,99,235,.08)}
+.chip[aria-pressed="true"]{background:#f4ecdf;border-color:#c9ad87;color:var(--brand2);box-shadow:0 0 0 2px rgba(185,157,126,.15)}
 .chip[aria-pressed="false"]{opacity:.55}
 .chip[aria-pressed="false"]::before{background:#b6c3d4}
 .chip:hover{transform:translateY(-1px)}
 .model-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:2px 0 22px;font-size:13px;color:var(--muted)}
 .model-bar b{color:var(--brand);font-variant-numeric:tabular-nums}
 /* 展开详情 / 导航高亮 */
-.more-btn{margin-top:16px;background:none;border:1px solid var(--line);color:var(--brand);font-size:13px;padding:7px 16px;border-radius:99px;cursor:pointer;font-family:inherit;transition:.2s}
-.more-btn:hover{background:#eef4ff;border-color:#9dc0ff}
+.more-btn{margin-top:16px;background:none;border:1px solid var(--line);color:var(--brand2);font-size:13px;padding:7px 16px;border-radius:99px;cursor:pointer;font-family:inherit;transition:.2s}
+.more-btn:hover{background:#f4ecdf;border-color:#c9ad87}
 .more{display:none;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
 .more.open{display:block}
 .more li{font-size:13.5px;color:var(--muted);margin-bottom:6px;list-style:none;padding-left:15px;position:relative}
 .more li::before{content:"·";position:absolute;left:4px;color:var(--brand2);font-weight:800}
-.nav-links a.active{background:#eef4ff;color:var(--brand)}
+.nav-links a.active{background:#f4ecdf;color:var(--brand2)}
 .copy h3{font-size:27px;font-weight:800;margin-bottom:8px;letter-spacing:.5px}
 .copy .en{font-size:13px;color:var(--brand2);letter-spacing:2.5px;font-weight:700;margin-bottom:16px}
 .copy>p{color:var(--muted);margin-bottom:20px}
@@ -192,7 +194,7 @@ section{padding:88px 0}
 /* ---------- 数据带 ---------- */
 .band{background:linear-gradient(rgba(9,16,30,.94),rgba(9,16,30,.94)),url("assets/ai-city.jpg") center/cover;color:#fff;padding:64px 0}
 .band-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
-.band-grid b{font-size:40px;font-weight:800;background:linear-gradient(120deg,#6fc3ff,#39e2c4);-webkit-background-clip:text;background-clip:text;color:transparent}
+.band-grid b{font-size:40px;font-weight:800;background:linear-gradient(120deg,#e6cf9f,#f3e3bd);-webkit-background-clip:text;background-clip:text;color:transparent}
 .band-grid span{display:block;color:#93a8c4;font-size:14px;margin-top:4px}
 
 /* ---------- 副业 banner ---------- */
@@ -211,10 +213,10 @@ section{padding:88px 0}
 
 /* ---------- 联系 ---------- */
 .contact{background:linear-gradient(rgba(9,16,30,.9),rgba(9,16,30,.9)),url("assets/voice-mic.jpg") center/cover;color:#fff}
-.contact .kicker{background:rgba(90,150,255,.16);color:#8ecbff}
+.contact .kicker{background:rgba(185,157,126,.2);color:#e6cf9f}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
 .info-item{display:flex;gap:16px;margin-bottom:24px}
-.info-item .ic{flex:none;width:46px;height:46px;border-radius:13px;background:rgba(80,140,255,.16);border:1px solid rgba(120,170,255,.3);display:flex;align-items:center;justify-content:center;font-size:20px}
+.info-item .ic{flex:none;width:46px;height:46px;border-radius:13px;background:rgba(185,157,126,.18);border:1px solid rgba(214,189,153,.4);display:flex;align-items:center;justify-content:center;font-size:20px}
 .info-item b{display:block;font-size:15px;margin-bottom:2px}
 .info-item span{color:#9fb4cf;font-size:14.5px}
 .form{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);padding:30px;backdrop-filter:blur(8px)}
@@ -231,9 +233,9 @@ section{padding:88px 0}
 .form .btn[disabled]{opacity:.65;cursor:progress}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .form-agree{display:flex;gap:9px;align-items:flex-start;margin:-2px 0 16px;font-size:12.5px}
-.form-agree .form-check-input{margin-top:3px;accent-color:#22d3ee;flex:none;width:15px;height:15px}
+.form-agree .form-check-input{margin-top:3px;accent-color:#b99d7e;flex:none;width:15px;height:15px}
 .form-agree .form-check-label{color:#a8bcd6;line-height:1.6}
-.form-agree a{color:#7cc4ff;text-decoration:underline}
+.form-agree a{color:#e2c89c;text-decoration:underline}
 
 /* ---------- footer ---------- */
 footer{background:#0a101d;color:#7f92ad;padding:36px 0;font-size:13.5px;text-align:center}
@@ -266,6 +268,8 @@ footer .fline b{color:#b9c7db;font-weight:600}
   .nav-links.open{display:flex}
   .nav-links a{padding:12px 10px}
   .nav-toggle{display:block}
+  .logo .logo-full{display:none}
+  .logo .logo-icon{display:block;height:34px}
   section{padding:64px 0}
   .sec-head h2{font-size:27px}
   .hero h1{font-size:30px}
@@ -295,8 +299,8 @@ footer .fline b{color:#b9c7db;font-weight:600}
 <header>
   <div class="container nav">
     <a class="logo" href="#top">
-      <span class="logo-mark">惠稷</span>
-      <span>惠稷索源<small>HUIJI SUOYUAN</small></span>
+      <img class="logo-full" src="assets/logo.png" alt="惠稷索源 HJSOY">
+      <img class="logo-icon" src="assets/logo-icon.png" alt="惠稷索源">
     </a>
     <button class="nav-toggle" id="navToggle" aria-label="打开菜单">☰</button>
     <nav class="nav-links" id="navLinks">
@@ -634,8 +638,8 @@ footer .fline b{color:#b9c7db;font-weight:600}
       <h2 style="font-size:32px;font-weight:800;margin:8px 0 34px">预约一场 30 分钟的现场演示</h2>
       <div class="info-item"><div class="ic">🏢</div><div><b>公司</b><span>惠稷（上海）信息技术有限公司</span></div></div>
       <div class="info-item"><div class="ic">📍</div><div><b>地址</b><span>上海市宝山区殷高西路101号高景国际大厦1602</span></div></div>
-      <div class="info-item"><div class="ic">📞</div><div><b>电话</b><span><a href="tel:18112476876" style="color:#9fd0ff">18112476876</a></span></div></div>
-      <div class="info-item"><div class="ic">✉️</div><div><b>邮箱</b><span><a href="mailto:wp@mhxgo.com" style="color:#9fd0ff">wp@mhxgo.com</a></span></div></div>
+      <div class="info-item"><div class="ic">📞</div><div><b>电话</b><span><a href="tel:18112476876" style="color:#e2c89c">18112476876</a></span></div></div>
+      <div class="info-item"><div class="ic">✉️</div><div><b>邮箱</b><span><a href="mailto:wp@mhxgo.com" style="color:#e2c89c">wp@mhxgo.com</a></span></div></div>
     </div>
     <div class="form reveal">
       <h4>留下您的需求，我们尽快联系您</h4>
@@ -673,7 +677,7 @@ footer .fline b{color:#b9c7db;font-weight:600}
 <footer>
   <div class="container">
     <div class="fline"><b>惠稷（上海）信息技术有限公司</b> · AI 行为分析 · 语义识别 · 系统集成 · 楼宇智能化</div>
-    <div class="fline">Copyright © 2019 惠稷（上海）信息技术有限公司 版权所有 All rights reserved. 苏ICP备19019780号-1 · <a href="privacy.html" style="color:#8fb6e8">隐私政策</a></div>
+    <div class="fline">Copyright © 2019 惠稷（上海）信息技术有限公司 版权所有 All rights reserved. 苏ICP备19019780号-1 · <a href="privacy.html" style="color:#d8c3a0">隐私政策</a></div>
   </div>
 </footer>
 
